@@ -1,0 +1,227 @@
+<div class="card-header  d-flex justify-content-between align-items-center">
+  <button mdbBtn (click)='facade.backToContract()' class="btn btn-sm btn-primary" data-overlay-color="#151b26"
+    mdbWavesEffect>
+    <i class="fas fa-arrow-left"></i>
+  </button>
+  <h5 cla>Servicios de {{facade.getSt().contract.nameCont}}</h5>
+  <button mdbBtn (click)='facade.saveServContract()' class="btn btn-sm btn-primary" data-overlay-color="#151b26"
+    mdbWavesEffect>
+    <i class="fas fa-floppy-o"></i>
+  </button>
+</div>
+
+
+<div class="bd-example bd-example-tabs">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="consult-tab" data-toggle="tab" href="#consult" role="tab" aria-controls="consult"
+        aria-selected="true">Consultas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="lab-tab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab"
+        aria-selected="false">Laboratorio clínico</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="imagen-tab" data-toggle="tab" href="#imagen" role="tab" aria-controls="imagen"
+        aria-selected="false">Imagenologia</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="other_proce-tab" data-toggle="tab" href="#other_proce" role="tab" aria-controls="other_proce"
+        aria-selected="false">Otros procedimientos no quirúrgicos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="proce_diagnos-tab" data-toggle="tab" href="#proce_diagnos" role="tab" aria-controls="proce_diagnos"
+        aria-selected="false">Procedimientos diagnósticos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="med-tab" data-toggle="tab" href="#med" role="tab" aria-controls="med"
+        aria-selected="false">Medicamentos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="mental_health-tab" data-toggle="tab" href="#mental_health" role="tab" aria-controls="mental_health"
+        aria-selected="false">Salud mental</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="surgical-tab" data-toggle="tab" href="#surgical" role="tab" aria-controls="surgical"
+        aria-selected="false">Quirúrgicos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sst-tab" data-toggle="tab" href="#sst" role="tab" aria-controls="sst"
+        aria-selected="false">Seguridad y salud en el trabajo</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="community-tab" data-toggle="tab" href="#community" role="tab" aria-controls="community"
+        aria-selected="false">Comunidad, su entorno y salud</a>
+    </li>
+    
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <!-- tab Consultas-->
+    <div class="tab-pane fade show active" id="consult" role="tabpanel" aria-labelledby="consult-tab">
+      <table #table_serv_contract class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+          <tr >            
+            <th>idServ</th>
+            <th>systama</th>
+            <th>tama</th>
+            <th>Soat</th>
+            <th>Valor soat</th>
+            <th>Valor venta</th>
+            <th>Nombre</th>
+            <th>activo</th>         
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let item of facade.getSt().listInsSerContract">           
+            <td *ngIf="item.systemService.cupsGroup==1">{{item.systemService.idServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==1">{{item.sysTamaServ.idTamaServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==1">{{item.idTama}}</td>
+            <td *ngIf="item.systemService.cupsGroup==1">
+              <select  [value]="item.idTama" (change)="facade.selectChange($event,item)"
+                class="form-control">
+                <option value="null">----</option>           
+                <option value="{{item.idTama}}"  *ngFor="let item of facade.getSt().listTaMa" >
+                  {{item.nameTama}}</option> 
+              </select>
+            </td>
+            <td *ngIf="item.systemService.cupsGroup==1">{{item.sysTamaServ.valueTamaServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==1">{{item.realValueServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==1">{{item.systemService.nameServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==1">                
+              <span>
+                <div class="custom-control custom-checkbox"  >
+                  <!-- <input type="checkbox" [checked]="item.checked" (change)="item.checked = !item.checked" /> -->
+                  <input type="checkbox" [checked]="item.checked" 
+                   (change)="facade.checkChangeService(item)" />
+                </div>
+              </span>           
+            </td>         
+          </tr>
+        </tbody>       
+      </table>
+
+    </div>
+
+    <!-- tab  Laboratorio clínico-->
+    <div class="tab-pane fade" id="lab" role="tabpanel" aria-labelledby="lab-tab">
+      Laboratorio clínico
+      <table #table_lab class="display" style="width:100%">
+        <thead>
+          <tr >            
+            <th>idServ</th>
+            <th>systama</th>
+            <th>tama</th>
+            <th>Soat</th>
+            <th>Valor soat</th>
+            <th>Valor venta</th>
+            <th>Nombre</th>
+            <th>activo</th>         
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let item of facade.getSt().listInsSerContract">           
+            <td *ngIf="item.systemService.cupsGroup==2">{{item.systemService.idServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==2">{{item.sysTamaServ.idTamaServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==2">{{item.sysTamaServ.idTama}}</td>
+            <td *ngIf="item.systemService.cupsGroup==2">
+              <select  [value]="item.idTama" (change)="facade.selectChange($event,item)"
+                class="form-control">
+                <option value="null">----</option>           
+                <option value="{{item.idTama}}"  *ngFor="let item of facade.getSt().listTaMa" >
+                  {{item.nameTama}}</option> 
+              </select>
+            </td>
+            <td *ngIf="item.systemService.cupsGroup==2">{{item.sysTamaServ.valueTamaServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==2">{{item.realValueServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==2">{{item.systemService.nameServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==2">                         
+              <span>
+                <div class="custom-control custom-checkbox"  >
+                  <!-- <input type="checkbox" [checked]="item.checked" (change)="item.checked = !item.checked" /> -->
+                  <input type="checkbox" [checked]="item.checked" 
+                   (change)="facade.checkChangeService(item)" />
+                </div>
+              </span>           
+            </td>         
+          </tr>
+        </tbody>       
+      </table>
+
+    </div>
+
+    <!-- tab imagenología-->
+    <div class="tab-pane fade" id="imagen" role="tabpanel" aria-labelledby="imagen-tab">
+      Imagenologia
+      <table #table_imagen class="display" style="width:100%">
+        <thead>
+          <tr >            
+            <th>idServ</th>
+            <th>systama</th>
+            <th>tama</th>
+            <th>Soat</th>
+            <th>Valor soat</th>
+            <th>Valor venta</th>
+            <th>Nombre</th>
+            <th>activo</th>         
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let item of facade.getSt().listInsSerContract">           
+            <td *ngIf="item.systemService.cupsGroup==3">{{item.systemService.idServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==3">{{item.sysTamaServ.idTamaServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==3">{{item.sysTamaServ.idTama}}</td>
+            <td *ngIf="item.systemService.cupsGroup==3">
+              <select  [value]="item.idTama" (change)="facade.selectChange($event,item)"
+                class="form-control">
+                <option value="1">2020</option>
+                <option value="2">2019</option>
+              </select>
+            </td>
+            <td *ngIf="item.systemService.cupsGroup==3">{{item.sysTamaServ.valueTamaServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==3">{{item.realValueServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==3">{{item.systemService.nameServ}}</td>
+            <td *ngIf="item.systemService.cupsGroup==3">                         
+              <span>
+                <div class="custom-control custom-checkbox"  >
+                  <!-- <input type="checkbox" [checked]="item.checked" (change)="item.checked = !item.checked" /> -->
+                  <input type="checkbox" [checked]="item.checked" 
+                   (change)="facade.checkChangeService(item)" />
+                </div>
+              </span>           
+            </td>         
+          </tr>
+        </tbody>       
+      </table>
+    </div>
+    <!-- tab Otros procedimientos no quirúrgicos-->
+    <div class="tab-pane fade" id="other_proce" role="tabpanel" aria-labelledby="other_proce-tab">
+      Otros procedimientos no quirúrgicos
+    </div>
+    <!-- tab Procedimientos diagnósticos-->
+    <div class="tab-pane fade" id="proce_diagnos" role="tabpanel" aria-labelledby="proce_diagnos-tab">
+      Procedimientos diagnósticos
+    </div>
+    <!-- tab Medicamentos -->
+    <div class="tab-pane fade" id="med" role="tabpanel" aria-labelledby="med-tab">
+      Medicamentos
+    </div>
+    <!-- tab mental_health-->
+    <div class="tab-pane fade" id="mental_health" role="tabpanel" aria-labelledby="mental_health-tab">
+      mental_health
+    </div>
+    <!-- tab surgical Quirúrgicos-->
+    <div class="tab-pane fade" id="surgical" role="tabpanel" aria-labelledby="surgical-tab">
+      surgical Quirúrgicos
+    </div>
+     <!-- tab Seguridad y salud en el trabajo-->
+     <div class="tab-pane fade" id="sst" role="tabpanel" aria-labelledby="sst-tab">
+      Seguridad y salud en el trabajo
+    </div>
+     <!-- tab Comunidad, su entorno y salud-->
+     <div class="tab-pane fade" id="community" role="tabpanel" aria-labelledby="community-tab">
+      Comunidad, su entorno y salud
+    </div>
+    
+  </div>
+</div>

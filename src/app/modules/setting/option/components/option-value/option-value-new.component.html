@@ -1,0 +1,32 @@
+<div class="container col-md-6">
+  <div class="card hoverable ">
+    <div class="card-header default-color">
+      <h4 class="text-white">Crear valores para opción </h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="optionValueForm" (ngSubmit)="onSaveForm()">
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate type="text" id="nameOptVal" class="form-control" formControlName="nameOptVal">
+          <label for="nameOptVal">Nombre</label>
+          <mdb-error *ngIf="nameOptVal.invalid && (nameOptVal.dirty || nameOptVal.touched)">Ingrese Nombre</mdb-error>
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate id="codOpt" formControlName="codOptVal" type="text" class="form-control">
+          <label for="codOpt">Código</label>
+          <mdb-error  *ngIf="codOptVal.invalid && (codOptVal.dirty || codOptVal.touched)">Ingrese Código</mdb-error>
+        </div>
+        <div class="md-form md-outline">
+          <input  mdbInput mdbValidate formControlName="descOptVal" type="text" class="form-control">
+          <label>Descripción</label>
+          <mdb-error  *ngIf="descOptVal.invalid && (descOptVal.dirty || descOptVal.touched)">Ingrese Descripción</mdb-error>
+        </div>
+        <div class="row justify-content-center">
+          <button mdbBtn  type="submit" [disabled]="!optionValueForm.valid" class="btn btn-blue btn-sm"
+                  mdbWavesEffect>Guardar</button>
+          <button mdbBtn  onclick="onResetForm();" routerLink="abaton/user/option/view" mdbWavesEffect class="btn btn-danger ml-2 btn-sm">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,39 @@
+<div class="card hoverable">
+    <div class="card-header  d-flex justify-content-between align-items-center">
+      <button mdbBtn (click)='facade.backToSection()' class="btn btn-sm btn-primary" data-overlay-color="#151b26" mdbWavesEffect>
+        <i class="fas fa-arrow-circle-left"></i>
+      </button>
+      <h5 cla>Funcionalidades de la seccion {{facade.getSt().section.nameSection}}</h5>
+      <a mdbBtn class="btn btn-sm btn-primary" role="button" mdbWavesEffect routerLink="new"
+         data-overlay-color="#151b26">
+        <i class="fas fa-user-plus"></i>
+      </a>
+    </div>
+  
+    <table class="table table-condensed">
+      <thead>
+      <tr class="d-flex">
+        <th class="col-md-1">nodo</th>
+        <th class="col-md-1">Codigo</th>
+        <th class="col-md-3">Nombre</th>
+        <th class="col-md-3">Descripcion</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="d-flex" *ngFor="let item of facade.getSt().listFunctionality">
+        <td class="align-middle col-md-1">{{item.sysIdFunctionality}}</td>
+        <td class="align-middle col-md-1">{{item.codFunctionality}}</td>
+        <td class="align-middle col-md-3">{{item.nameFunctionality}}</td>
+        <td class="align-middle col-md-3">{{item.descFunctionality}}</td>
+        <td class="col-md-3">
+          <button mdbBtn (click)='facade.updateOptionValue(item)' class="btn btn-md btn-blue" mdbWavesEffect>
+            <i class="fas fa-user-edit"></i>
+          </button>
+          <button mdbBtn (click)='facade.deleteOptionValue(item)' class="btn btn-md btn-danger" mdbWavesEffect>
+            <i class="fas fa-trash-alt"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  

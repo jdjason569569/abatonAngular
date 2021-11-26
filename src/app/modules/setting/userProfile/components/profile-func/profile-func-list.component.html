@@ -1,0 +1,22 @@
+
+
+
+<div class="card hoverable">
+    <div class="card-header  d-flex justify-content-between align-items-center">
+      <button mdbBtn (click)='facade.backToProfile()' class="btn btn-sm btn-primary" data-overlay-color="#151b26" mdbWavesEffect>
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h5 cla>Funcionalidades para {{facade.profileFuncSt().profile.nameProfile}}</h5>
+      <button mdbBtn (click)='facade.saveTreeProfileFunctionality()' class="btn btn-sm btn-primary" data-overlay-color="#151b26" mdbWavesEffect>
+        <i class="fas fa-floppy-o"></i>
+      </button>
+      <button  mdbBtn (click)='facade.saveTreeProfileFunctionality()' class="btn btn-sm btn-primary" data-overlay-color="#151b26" mdbWavesEffect>
+        <i class="fas fa-floppy-o"></i>
+      </button>
+    </div>
+
+    <app-tree-view [directories]="facade.profileFuncSt().directories"></app-tree-view>
+  
+
+ 
+</div>

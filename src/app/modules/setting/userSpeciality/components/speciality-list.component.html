@@ -1,0 +1,32 @@
+<div class="card hoverable">
+    <div class="card-header  d-flex justify-content-between align-items-center">
+      <h5 cla>Especialidades</h5>
+      <a mdbBtn class="btn btn-sm btn-primary" role="button"
+         (click)='facade.cleanSpeciality()'
+         mdbWavesEffect routerLink="new"
+         data-overlay-color="#151b26">
+        <i class="fas fa-user-plus"></i>
+      </a>
+    </div>
+    <table class="table table-condensed">
+      <thead>
+      <tr class="d-flex">
+        <th class="col-md-3">campo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="d-flex" *ngFor="let speciality of facade.specialitySt().listSpeciality">
+        <td class="align-middle col-md-3">{{speciality.signature}}</td>
+        <td class="col-md-3">
+          <button mdbBtn (click)='facade.updateSpeciality(speciality)'
+                  class="btn btn-md btn-blue" mdbWavesEffect>
+            <i class="fas fa-user-edit"></i>
+          </button>
+          <button mdbBtn (click)='facade.deleteSpeciality(speciality.idSpeciality)'
+                  class="btn btn-md btn-danger" mdbWavesEffect>
+            <i class="fas fa-trash-alt"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

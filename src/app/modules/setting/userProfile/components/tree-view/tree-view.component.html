@@ -1,0 +1,20 @@
+<ul>
+    <li *ngFor="let dir of directories">
+            <button   (click)="dir.toggle()"  >
+                    <i *ngIf="!dir.expanded" class="fas fa-folder"></i>
+                    <i *ngIf="dir.expanded" class="fas fa-arrow-left"></i>
+            </button>
+        <span><input type="checkbox" [checked]="dir.checked" (click)="dir.check()" /></span>
+        <span (click)="dir.toggle()">{{ dir.name }}</span>
+        <div *ngIf="dir.expanded">
+            <ul>
+                <li *ngFor="let file of dir.files">
+                        <span><input type="checkbox" [checked]="file.checked" (click)="file.check()" /></span>
+                    {{file}}                    
+                </li>                                
+            </ul>
+            <app-tree-view [directories]="dir.directories"></app-tree-view>
+        </div>
+    </li>
+</ul>
+

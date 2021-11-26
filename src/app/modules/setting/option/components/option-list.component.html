@@ -1,0 +1,34 @@
+<div class="card hoverable">
+  <a mdbBtn class="btn btn-sm btn-primary" role="button" mdbWavesEffect routerLink="new" data-overlay-color="#151b26">
+    <i class="fas fa-user-plus"></i>
+  </a>
+  <div class="card-header  d-flex justify-content-between align-items-center">
+    <h5 cla>Opciones</h5>
+  </div>
+  <table class="table table-condensed">
+    <thead>
+      <tr class="d-flex">
+        <th class="col-md-3">Codigo</th>
+        <th class="col-md-3">Nombre</th>
+        <th class="col-md-3">Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="d-flex" *ngFor="let item of facade.optionSt().listOption">
+        <td class="align-middle col-md-3">{{item.codOpt}}</td>
+        <td class="align-middle col-md-3">{{item.nameOpt}}</td>
+        <td class="align-middle col-md-3">{{item.descOpt}}</td>
+        <td class="col-md-3">
+          <button mdbBtn (click)='facade.viewOptionValue(item)' class="btn btn-md btn-blue" mdbWavesEffect>
+            <i class="fas fa-user-astronaut"></i>
+          </button>
+          <button mdbBtn (click)='facade.updateOption(item)' class="btn btn-md btn-blue" mdbWavesEffect>
+            <i class="fas fa-user-edit"></i>
+          </button>
+          <button mdbBtn (click)='facade.deleteOption(item.idOpt)' class="btn btn-md btn-danger" mdbWavesEffect>
+            <i class="fas fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

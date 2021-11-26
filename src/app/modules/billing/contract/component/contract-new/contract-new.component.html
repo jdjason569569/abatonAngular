@@ -1,0 +1,96 @@
+<div class="container col-md-12">
+    <div class="card hoverable ">
+      <div class="card-header default-color">
+        <h4 class="text-white">Crear Contrato</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="facade.getSt().form" (ngSubmit)="facade.onSaveForm()">
+
+            <div class="md-form md-outline">
+                <input mdbInput mdbValidate type="text" id="nameCont" class="form-control" formControlName="nameCont">
+                <label for="nameCont">Nombre Contrato</label>
+                <mdb-error *ngIf="facade.getSt().nameCont.invalid && (facade.getSt().nameCont.dirty || facade.getSt().nameCont.touched)">Ingrese Nombre</mdb-error>
+              </div>
+              <div class="md-form md-outline">
+                <input mdbInput mdbValidate type="text" id="codeCont" class="form-control" formControlName="codeCont">
+                <label for="codeCont">Codigo Contrato</label>
+                <mdb-error *ngIf="facade.getSt().codeCont.invalid && (facade.getSt().codeCont.dirty || facade.getSt().codeCont.touched)">Ingrese Codigo</mdb-error>
+              </div>
+
+        <div><label for="idEapb">Administradora</label>  </div>            
+          <div class="md-form md-outline">                       
+            <select  id="idEapb" class="form-control" formControlName="idEapb">
+                <option value="null" >--selecione--</option>
+                <option value="{{item.idEapb}}"  *ngFor="let item of facade.getSt().listEapb" >{{item.nameEapb}}</option>                
+            </select>           
+            <mdb-error *ngIf="facade.getSt().idEapb.invalid && (facade.getSt().idEapb.dirty || facade.getSt().idEapb.touched)">Selecione institucion</mdb-error>
+          </div>
+
+          <div><label for="regimeCont">Regimen</label>  </div>            
+          <div class="md-form md-outline">                       
+            <select  id="regimeCont" class="form-control" formControlName="regimeCont">
+                <option value="null" >--selecione--</option>
+                <option value="{{item.idOptVal}}"  *ngFor="let item of facade.getSt().listRegimen" >{{item.nameOptVal}}</option>                
+            </select>           
+            <mdb-error *ngIf="facade.getSt().regimeCont.invalid && (facade.getSt().regimeCont.dirty || facade.getSt().regimeCont.touched)">Selecione Regimen</mdb-error>
+          </div>
+         
+          <div class="md-form md-outline">
+            <input mdbInput mdbValidate id="intialDateCont" formControlName="intialDateCont" 
+            data-data-format="DD MMMM YYYY"
+            type="date" class="form-control">
+            <label for="intialDateCont">Fecha inicial</label>
+            <mdb-error  *ngIf="facade.getSt().intialDateCont.invalid && (facade.getSt().intialDateCont.dirty || facade.getSt().intialDateCont.touched)">Ingrese fecha inicial</mdb-error>
+          </div>
+        
+          <div class="md-form md-outline">
+            <input mdbInput mdbValidate id="finalDateCont" formControlName="finalDateCont"
+            data-data-format="DD MMMM YYYY" type="date" 
+             class="form-control">
+            <label for="finalDateCont">Fecha inicial</label>
+            <mdb-error  *ngIf="facade.getSt().finalDateCont.invalid && (facade.getSt().finalDateCont.dirty || facade.getSt().finalDateCont.touched)">Ingrese fecha final</mdb-error>
+          </div>
+
+          <div><label for="kindCont">Tipo contrato</label>  </div>            
+          <div class="md-form md-outline">                       
+            <select  id="kindCont" class="form-control" formControlName="kindCont">
+                <option value="null" >--selecione--</option>
+                <option value="{{item.idOptVal}}"  *ngFor="let item of facade.getSt().listTypeCont" >{{item.nameOptVal}}</option>                
+            </select>           
+            <mdb-error *ngIf="facade.getSt().kindCont.invalid && (facade.getSt().kindCont.dirty || facade.getSt().kindCont.touched)">Selecione tipo</mdb-error>
+          </div>
+
+          <div><label for="idTama">Manual tarifario</label>  </div>            
+          <div class="md-form md-outline">                       
+            <select  id="idTama" class="form-control" formControlName="idTama">
+                <option value="null" >--selecione--</option>
+                <option value="{{item.idTama}}"  *ngFor="let item of facade.getSt().listTariffManual" >{{item.nameTama}}</option>                
+            </select>           
+            <mdb-error *ngIf="facade.getSt().idTama.invalid && (facade.getSt().idTama.dirty || facade.getSt().idTama.touched)">Selecione tipo</mdb-error>
+          </div>
+
+          <div class="md-form md-outline">
+            <input mdbInput mdbValidate type="text" id="ajustTama" class="form-control" formControlName="ajustTama">
+            <label for="ajustTama"> Ajuste Manual tarifario</label>
+            <mdb-error *ngIf="facade.getSt().ajustTama.invalid && (facade.getSt().ajustTama.dirty || facade.getSt().ajustTama.touched)">Ingrese valor</mdb-error>
+          </div>
+
+          <div class="md-form md-outline">
+            <input mdbInput mdbValidate type="text" id="totalValueContract" class="form-control" formControlName="totalValueContract">
+            <label for="totalValueContract">Valor Contrato</label>
+            <mdb-error *ngIf="facade.getSt().totalValueContract.invalid && (facade.getSt().totalValueContract.dirty || facade.getSt().totalValueContract.touched)">Ingrese valor</mdb-error>
+          </div>
+
+     
+          
+          <div class="row justify-content-center">
+            <button mdbBtn  type="submit" [disabled]="!facade.getSt().form.valid" class="btn btn-blue btn-sm"
+                    mdbWavesEffect>Guardar</button>
+            <button mdbBtn  onclick="facade.onResetForm()" routerLink="contract" mdbWavesEffect class="btn btn-danger ml-2 btn-sm">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,29 @@
+<div class="container col-md-6">
+  <div class="card hoverable ">
+    <div class="card-header default-color">
+      <h4 class="text-white">Crear Perfil</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="facade.profileSt().profileForm" (ngSubmit)="facade.onSaveForm()">
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate type="text" id="nameProfile" class="form-control" formControlName="nameProfile">
+          <label for="nameProfile">Nombre</label>
+          <mdb-error
+            *ngIf="facade.profileSt().nameProfile.invalid && (facade.profileSt().nameProfile.dirty || facade.profileSt().nameProfile.touched)">
+            Ingrese Nombre
+          </mdb-error>
+        </div>
+        <div class="row justify-content-center">
+          <button mdbBtn type="submit" [disabled]="!facade.profileSt().profileForm.valid"
+                  class="btn btn-blue btn-sm"
+                  mdbWavesEffect>Guardar
+          </button>
+          <button mdbBtn onclick="facade.onResetForm();" routerLink="user/profile"
+                  mdbWavesEffect class="btn btn-danger ml-2 btn-sm">Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

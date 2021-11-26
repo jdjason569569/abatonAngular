@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-6">
+    tabla de consultas dia
+    {{facade.getSt().titulo}}
+    <button mdbBtn (click)='facade.generateConsultation()' class="btn btn-sm btn-primary" data-overlay-color="#151b26"
+    mdbWavesEffect >
+    <i class="fas fa-floppy-o"></i> Generar Agenda
+  </button>
+  <button *ngIf="facade.getSt().listConsultationInsert.length > 0" mdbBtn (click)='facade.insertListConsultation()' class="btn btn-sm btn-primary" data-overlay-color="#151b26"
+  mdbWavesEffect>
+  <i class="fas fa-floppy-o"></i> Guardar Agenda
+</button>
+  <input type="button" value="Recargar" id="refrescar"> 
+  </div>
+  <div class="col-md-5">
+    <div id="my-calendar"></div>
+  </div>
+</div>

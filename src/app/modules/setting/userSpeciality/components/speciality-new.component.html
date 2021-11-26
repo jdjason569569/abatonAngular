@@ -1,0 +1,60 @@
+<div class="container col-md-6">
+  <div class="card hoverable ">
+    <div class="card-header default-color">
+      <h4 class="text-white">Crear Especialidad</h4>
+    </div>
+    <div class="card-body">
+      <!--  [formGroup]="facade.specialitySt().userForm" ABATON_ERROR -->
+      <form (ngSubmit)="facade.manageNewOrEdit()">
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate type="text" id="identUser" class="form-control" formControlName="identUser">
+          <label for="identUser">Identificación</label>
+          <!-- <mdb-error *ngIf="facade.identUser.invalid && (facade.identUser.dirty || facade.identUser.touched)">Ingrese
+            identificacion
+          </mdb-error> ABATON_ERROR-->
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate formControlName="nameUser" type="text" class="form-control">
+          <label>Nombres</label>
+          <!-- <mdb-error *ngIf="facade.nameUser.invalid && (facade.nameUser.dirty || facade.nameUser.touched)">Ingrese
+            Nombres
+          </mdb-error> ABATON_ERROR -->
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate formControlName="lastNameUser" type="text" class="form-control">
+          <label>Apellidos</label>
+          <!-- <mdb-error *ngIf="facade.lastNameUser.invalid && (facade.lastNameUser.dirty || facade.lastNameUser.touched)">
+            Ingrese Nombres
+          </mdb-error> ABATON_ERROR-->
+        </div>
+        <div class="md-form md-outline"  ><!-- *ngIf="!facade.userSt().user" ABATON_ERROR -->
+          <input mdbInput mdbValidate formControlName="passUser" type="password" class="form-control">
+          <label>contraseña:</label>
+          <!-- <mdb-error *ngIf="facade.passUser.invalid && (facade.passUser.dirty || facade.passUser.touched)">Ingrese
+            Contraseña
+          </mdb-error> ABATON_ERROR-->
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate type="text" id="emailUser" class="form-control" formControlName="emailUser">
+          <label for="emailUser">Email</label>
+          <!-- <mdb-error
+            *ngIf="facade.emailUser.invalid && (facade.emailUser.dirty || facade.emailUser.touched)">Ingrese Email
+          </mdb-error> ABATON_ERROR-->
+          <!-- <mdb-error
+            *ngIf="facade.emailUser.touched && facade.emailUser.invalid && facade.userSt().userForm.controls['emailUser'].errors.pattern">
+            Ingrese correo electronico correcto
+          </mdb-error> ABATON_ERROR-->
+        </div>
+        <div class="row justify-content-center">
+          <button mdbBtn type="submit"  class="btn btn-blue btn-sm"
+                  mdbWavesEffect>Guardar
+          </button> <!-- [disabled]="!facade.userSt().userForm.valid" ABATON_ERROR --> 
+          <button mdbBtn type="button" (click)="facade.onResetForm()"
+                  routerLink="user" mdbWavesEffect class="btn btn-danger ml-2 btn-sm">Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

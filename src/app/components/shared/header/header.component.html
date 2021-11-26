@@ -1,0 +1,132 @@
+
+ <!-- ========== HEADER ========== -->
+ <header id="header" class="u-header u-header--modern u-header--bordered u-header--sticky-top-lg">
+  <div class="u-header__section">
+    <div id="logoAndNav" class="container-fluid">
+      <!-- Nav -->
+      <nav class="js-mega-menu navbar navbar-expand-lg u-header__navbar ">       
+        <!-- Info user sesion -->
+        <div>
+          <span class="d-none d-sm-inline-block">{{user.nameUser}} {{user.lastNameUser}}</span>
+        </div>
+        <!-- End Info user sesion -->
+        <!-- Responsive Toggle Button -->
+        <button type="button" class="navbar-toggler btn u-hamburger u-header__hamburger" aria-label="Toggle navigation"
+          aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+          <span class="d-none d-sm-inline-block">Menu</span>
+          <span id="hamburgerTrigger" class="u-hamburger__box ml-3">
+            <span class="u-hamburger__inner"></span>
+          </span>
+        </button>
+        <!-- End Responsive Toggle Button -->
+        <!-- Navigation -->
+        <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse py-0 ">
+          <ul class="navbar-nav u-header__navbar-nav">
+            <!-- Pages -->
+            <li class="nav-item hs-has-mega-menu u-header__nav-item" data-event="hover" data-animation-in="fadeInUp"
+              data-animation-out="fadeOut" data-position="right">
+              <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="javascript:;" aria-haspopup="true"
+                aria-expanded="false">
+                Configuraciones
+                <span class="fa fa-angle-down u-header__nav-link-icon"></span>
+              </a>
+              <!-- Pages - Mega Menu -->
+              <div class="hs-mega-menu w-100 u-header__sub-menu" aria-labelledby="PagesMegaMenu">
+                <div class="u-header__mega-menu-wrapper-v1">
+                  <ul class="row list-unstyled u-header__mega-menu-list">
+                    <li class="col-sm-6 col-lg-2 u-header__mega-menu-col mb-3 mb-lg-0">
+                      <span class="u-header__sub-menu-title">Empresa</span>
+                      <!-- Links -->
+                      <ul class="list-unstyled">
+                        <li><a class="nav-link u-header__sub-menu-nav-link px-0"  routerLink="configuration">
+                            Crear Empresa</a>
+                        </li>
+                      </ul>
+                      <!-- End Links -->
+                    </li>
+                    <li class="col-sm-6 col-lg-2 u-header__mega-menu-col mb-3 mb-lg-0">
+                      <span class="u-header__sub-menu-title">Usuarios</span>
+                      <!-- Links -->
+                      <ul class="list-unstyled">
+                        <li class="dropdown-item hs-has-sub-menu" >
+                          <a id="navLinkWorksBoxedLayout" routerLink="/abaton/user/user" class="nav-link u-header__sub-menu-nav-link"
+                            href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="navSubmenuWorksBoxedLayout">
+                            Gestionar Usuarios
+                            <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                          </a>
+                        </li>
+                        <li class="dropdown-item hs-has-sub-menu">
+                          <a  routerLink="/abaton/user/speciality" class="nav-link u-header__sub-menu-nav-link"
+                             href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                             aria-controls="navSubmenuWorksBoxedLayout">
+                            Especialidades
+                            <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                          </a>
+                        </li>
+                        <li class="dropdown-item hs-has-sub-menu">
+                          <a  routerLink="/abaton/user/profile" class="nav-link u-header__sub-menu-nav-link"
+                             href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                             aria-controls="navSubmenuWorksBoxedLayout">
+                            Perfiles
+                            <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- End Links -->
+                    </li>
+                    <li class="col-sm-6 col-lg-2 u-header__mega-menu-col mb-3 mb-lg-0">
+                      <span class="u-header__sub-menu-title">Opciones</span>
+                      <!-- Links -->
+                      <ul class="list-unstyled">
+                        <li class="dropdown-item hs-has-sub-menu" *ngIf="visibleItem('user_configuration', 'functionality')">
+                          <a id="navoption" routerLink="/abaton/user/option" class="nav-link u-header__sub-menu-nav-link"
+                             href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                             aria-controls="navSubmenuWorksBoxedLayout">
+                            Gestionar Opciones
+                            <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                          </a>
+                        </li>
+                        <li class="dropdown-item hs-has-sub-menu" *ngIf="visibleItem('user_configuration', 'functionality')">
+                          <a id="navconstant" routerLink="/abaton/constant" class="nav-link u-header__sub-menu-nav-link"
+                             href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                             aria-controls="navSubmenuWorksBoxedLayout">
+                            Gestionar Constantes
+                            <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                          </a>
+                        </li>
+                        <li class="dropdown-item hs-has-sub-menu" *ngIf="visibleItem('user_configuration', 'functionality')">
+                          <a id="navfunctionality" routerLink="/abaton/functionality" class="nav-link u-header__sub-menu-nav-link"
+                             href="javascript:;" aria-haspopup="true" aria-expanded="false"
+                             aria-controls="navSubmenuWorksBoxedLayout">
+                            Gestionar Funcionalidades
+                            <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- End Links -->
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- End Pages - Mega Menu -->
+            </li>
+            <!-- End Pages -->
+            <!-- Button -->  
+            <li class="nav-item u-header__nav-item-btn">
+              <a (click)='logout()' class="btn btn-sm btn-primary"  role="button"  data-modal-target="#signupModal"
+                data-overlay-color="#151b26">
+                <span class="fa fa-user-circle mr-1"></span>
+                Salir
+              </a>
+            </li>
+            <!-- End Button -->        
+          </ul>
+        </div>
+        <!-- End Navigation -->     
+      </nav>
+      <!-- End Nav -->
+    </div>
+  </div>
+</header>
+<!-- ========== END HEADER ========== -->

@@ -1,0 +1,128 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <img src="assets/images/logos/fuse.svg">
+        </div>
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+            ÁBATON
+        </div>
+
+        <div style="background-color:rgba(0, 0, 0, 0.5); padding: 10px;" class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+            Sistema de gestión de historias clínicas coonfigurables bajo el estandar HL7 vigente en el mercado,
+            orientado a clínicas, consultorios, IPS y hospitales
+        </div>
+
+    </div>
+
+    <div id="login-form-wrapper" fusePerfectScrollbar [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo" fxHide.gt-xs>
+                <img src="assets/images/logos/fuse.svg">
+            </div>
+
+            <div class="title">BIENVENIDO, INICIA SESIÓN</div>
+
+            <form (ngSubmit)="login()" name="loginForm" [formGroup]="loginForm" novalidate>
+                <div id="signin1" data-target-group="idForm" *ngIf="!facade.loginStat().multipleInstitution">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Numero de identificación</mat-label> 
+                        <input matInput formControlName="email" type="text"
+                            >
+                            <!-- [(ngModel)]="facade.loginStat().user.identUser" -->
+                        <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                        <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                            Numero de identificación obligatorio
+                        </mat-error>
+                        <!-- <mat-error *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('email')">
+                        Correo electrónico incorrecto 
+                    </mat-error> -->
+                        <mat-error *ngIf="!loginForm.get('email').hasError('required') &&
+                                !loginForm.get('email').hasError('minLength')">
+                            Por lo menos 6 caracteres
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput type="password" formControlName="password">
+                        <!-- [(ngModel)]="facade.loginStat().user.passUser" -->
+                        <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+                        <mat-error>
+                            Contraseña obligatoria
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                        fxLayoutAlign="space-between center">
+                        <mat-checkbox class="remember-me" aria-label="Remember Me">
+                            Recuerdame
+                        </mat-checkbox>
+
+                        <a class="forgot-password" [routerLink]="'/pages/auth/forgot-password-2'">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+
+                    <button type="submit" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
+                        [disabled]="loginForm.invalid">
+                        Entrar
+                    </button>
+                </div>
+
+                <!--campo de escoger otra institución-->
+                <div *ngIf="facade.loginStat().multipleInstitution">
+                    <header class="text-center mb-5">
+                        <p>Escoja la institución que desea ingresar</p>
+                    </header>
+                    <mat-form-field appearance="outline" class="category-selector">
+                        <mat-label>Institución</mat-label>
+                        <mat-select [(ngModel)]="facade.loginStat().institutionSelect"
+                            (selectionChange)="filterCoursesByCategory()">
+                            <option [value]="null" disabled selected>Seleccione una institución</option>
+                            <option *ngFor="let inst of facade.loginStat().user.lstInstitutions" [ngValue]="inst">
+                                {{inst.nameInst}}
+                            </option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+                <!-- <div class="mb-3">
+                    <button class="btn btn-block btn-danger" *ngIf="facade.loginStat().multipleInstitution"
+                        (click)="facade.loginStat().multipleInstitution = false">
+                        Atras
+                    </button>
+                    <button type="submit" class="btn btn-block btn-login" [disabled]="!f.valid">Entrar</button>
+                </div> -->
+                <!--Fin de selección de empresa-->
+
+
+
+            </form>
+
+            <div class="separator">
+                <span class="text">O</span>
+            </div>
+            <!-- 
+            <div fxLayout="column" fxLayoutAlign="start center">
+
+                <button mat-raised-button class="google">
+                    Entrar con Google
+                </button>
+
+                <button mat-raised-button class="facebook">
+                    Entrar con Facebook
+                </button>
+
+            </div>
+ -->
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">¿No tienes cuenta?</span>
+                <a class="link" [routerLink]="'/pages/auth/register-2'">Crea tu cuenta</a>
+            </div>
+        </div>
+    </div>
+</div>

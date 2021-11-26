@@ -1,0 +1,49 @@
+<div class="container col-md-6">
+  <div class="card hoverable ">
+    <div class="card-header default-color">
+      <h4 class="text-white">Crear Constante</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="facade.getSt().form" (ngSubmit)="facade.onSaveForm()">
+        <div><label for="idInst">Empresa</label> </div>
+        <div class="md-form md-outline">
+          <select id="idInst" class="form-control" formControlName="idInst">
+            <option value="null">General</option>
+            <option value="{{item.idInst}}" *ngFor="let item of facade.getSt().listInst">{{item.nameInst}}</option>
+          </select>
+          <mdb-error
+            *ngIf="facade.getSt().idInst.invalid && (facade.getSt().idInst.dirty || facade.getSt().idInst.touched)">
+            Selecione institucion</mdb-error>
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate type="text" id="nameConstant" class="form-control" formControlName="nameConstant">
+          <label for="nameConstant">Nombre</label>
+          <mdb-error
+            *ngIf="facade.getSt().nameConstant.invalid && (facade.getSt().nameConstant.dirty || facade.getSt().nameConstant.touched)">
+            Ingrese Nombre</mdb-error>
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate id="valueConstant" formControlName="valueConstant" type="text"
+            class="form-control">
+          <label for="valueConstant">Valor</label>
+          <mdb-error
+            *ngIf="facade.getSt().valueConstant.invalid && (facade.getSt().valueConstant.dirty || facade.getSt().valueConstant.touched)">
+            Ingrese Valor</mdb-error>
+        </div>
+        <div class="md-form md-outline">
+          <input mdbInput mdbValidate formControlName="descConstant" type="text" class="form-control">
+          <label>Descripción</label>
+          <mdb-error
+            *ngIf="facade.getSt().descConstant.invalid && (facade.getSt().descConstant.dirty || facade.getSt().descConstant.touched)">
+            Ingrese Descripción</mdb-error>
+        </div>
+        <div class="row justify-content-center">
+          <button mdbBtn type="submit" [disabled]="!facade.getSt().form.valid" class="btn btn-blue btn-sm"
+            mdbWavesEffect>Guardar</button>
+          <button mdbBtn onclick="facade.onResetForm()" routerLink="constant" mdbWavesEffect
+            class="btn btn-danger ml-2 btn-sm">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
